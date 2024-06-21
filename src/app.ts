@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
+import employeeRoutes from './Route/employeeRoutes';
 // Charger les variables d'environnement depuis le fichier .env
 dotenv.config();
 // Connexion à MongoDB en utilisant l'URL de la base de données définie dans les variables d'environnement
@@ -23,6 +23,9 @@ db.once('open', () => {
 });
 // Initialisation de l'application Express
 const app = express();
+app.use(express.json());
+// Routes
+app.use('/employees', employeeRoutes);
 // Définir le port sur lequel le serveur écoutera (soit la variable d'environnement PORT, soit 3000 par défaut)
 const port = process.env.PORT || 3000;
 // Démarrer le serveur et écouter sur le port défini

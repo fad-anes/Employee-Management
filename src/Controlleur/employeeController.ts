@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import Employee from '../Model/Employee';
 
 // Ajouter un nouvel employé
-export const addEmployee = async (req: Request, res: Response): Promise<void> => {
+export const   addEmployee=async(req:Request, res:Response): Promise<void> =>{
     try {
       const employee = new Employee(req.body);
       await employee.save();
